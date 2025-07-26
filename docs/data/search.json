@@ -1,0 +1,1 @@
+{"list":[{"title":"ask","link":"<a href=\"global.html#ask\">ask</a>","description":"Prompts the user with an input question using Enquirer and logs the response."},{"title":"asks","link":"<a href=\"global.html#asks\">asks</a>","description":"Prompts the user with a series of input questions based on the provided options array using Enquirer."}]}
