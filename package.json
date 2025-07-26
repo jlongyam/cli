@@ -15,8 +15,11 @@
   },
   "license": "MIT",
   "author": "jlongyam",
-  "main": "./dist/args.js",
+  "main": "./src/index.js",
   "type": "module",
+  "exports": {
+    "import": "./dist/index.js"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -29,13 +32,15 @@
     "rollup": "^4.45.3"
   },
   "scripts": {
-    "build": "rollup -c",
+    "build": "clear && rollup -c",
     "test:args": "clear && node ./test/args.js",
     "test:args:length": "clear && node ./test/args.js -h --version name=test",
     "test:dist:args": "clear && node ./test/dist/args.js",
     "test:dist:args:length": "clear && node ./test/dist/args.js -h --version name=test",
     "test:input:ask": "clear && node ./test/input.ask.js",
     "test:input:asks": "clear && node ./test/input.asks.js",
+    "test:index": "clear && node ./test/index.js",
+    "test:dist:index": "clear && node ./test/dist/index.js",
     "update": "npm publish",
     "next": "npm version patch"
   }

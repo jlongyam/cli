@@ -5,9 +5,9 @@ import pkg from './package.json' with { type: 'json' };
 
 export default [
 	{
-		input: './src/args.js',
+		input: pkg.main,
 		output: {
-			file: pkg.main,
+			file: pkg.exports.import,
 			format: 'es',
 			inlineDynamicImports: true
 		},
