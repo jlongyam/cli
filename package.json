@@ -45,7 +45,7 @@
     "test:dist:input:asks": "clear && node ./test/dist/input.asks.js",
     "test:index": "clear && node ./test/index.js",
     "test:dist:index": "clear && node ./test/dist/index.js",
-    "doc": "jsdoc ./src/input.js -d ./docs/ -t ./node_modules/clean-jsdoc-theme",
+    "doc": "jsdoc ./src/ -d ./docs/ -t ./node_modules/clean-jsdoc-theme",
     "update": "npm publish",
     "next": "npm version patch"
   }
