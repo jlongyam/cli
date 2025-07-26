@@ -25,11 +25,17 @@
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "args-parser": "^1.3.0",
+    "enquirer": "^2.4.1",
     "rollup": "^4.45.3"
   },
   "scripts": {
     "build": "rollup -c",
-    "test": "node ./test/args.test.js",
+    "test:args": "clear && node ./test/args.js",
+    "test:args:length": "clear && node ./test/args.js -h --version name=test",
+    "test:dist:args": "clear && node ./test/dist/args.js",
+    "test:dist:args:length": "clear && node ./test/dist/args.js -h --version name=test",
+    "test:input:ask": "clear && node ./test/input.ask.js",
+    "test:input:asks": "clear && node ./test/input.asks.js",
     "update": "npm publish",
     "next": "npm version patch"
   }
