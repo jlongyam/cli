@@ -1,0 +1,26 @@
+{
+  "name": "@jlongyam/cli",
+  "version": "1.0.0",
+  "description": "CLI scripts collection",
+  "keywords": [
+    "cli"
+  ],
+  "homepage": "https://github.com/jlongyam/cli#readme",
+  "bugs": {
+    "url": "https://github.com/jlongyam/cli/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlongyam/cli.git"
+  },
+  "license": "MIT",
+  "author": "jlongyam",
+  "type": "module",
+  "main": "index.mjs",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node ./test/all.test.js"
+  }
+}
