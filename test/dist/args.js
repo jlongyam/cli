@@ -1,3 +1,3 @@
-import { args } from "../../dist/args.js";
+import { args } from "../../dist/index.js";
 
 console.log(args);

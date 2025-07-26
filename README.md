@@ -1,3 +1,30 @@
 # cli
 
-[MIT](LICENSE)
+## Install
+
+```
+npm install @jlongyam/cli --save-dev
+```
+
+## Usage
+
+__index.mjs__
+
+```js
+import { args } from "@jlongyam/cli";
+console.log(args)
+```
+
+__Shell__
+
+```shell
+node index.mjs --help
+```
+
+__result__:
+
+```js
+{ help: true }
+```
+
+[MIT](LICENSE) License
