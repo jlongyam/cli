@@ -29,6 +29,7 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "test": "node ./test/args.test.js"
+    "test": "node ./test/args.test.js",
+    "next": "npm version patch"
   }
 }
