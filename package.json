@@ -30,6 +30,7 @@
   "scripts": {
     "build": "rollup -c",
     "test": "node ./test/args.test.js",
+    "update": "npm publish",
     "next": "npm version patch"
   }
 }
