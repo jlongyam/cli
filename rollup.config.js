@@ -1,3 +1,4 @@
+import json from '@rollup/plugin-json';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import pkg from './package.json' with { type: 'json' };
@@ -5,15 +6,13 @@ import pkg from './package.json' with { type: 'json' };
 export default [
 	{
 		input: './src/args.js',
-		output: [{
-			file: pkg['exports']['.']['import'],
+		output: {
+			file: pkg.main,
 			format: 'es',
 			inlineDynamicImports: true
-		}, {
-			file: pkg['exports']['.']['require'],
-			format: 'cjs'
-		}],
+		},
 		plugins: [
+			json(),
 			resolve(),
 			commonjs()
 		]
