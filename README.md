@@ -27,4 +27,4 @@ __result__:
 { help: true }
 ```
 
-[MIT](LICENSE) License
+[MIT](LICENSE)
