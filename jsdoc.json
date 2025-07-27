@@ -31,7 +31,8 @@
           "id": "npm",
           "link": "https://www.npmjs.com/package/@jlongyam/cli"
         }
-      ]
+      ],
+      "footer": "<p style='text-align: center'>Theme by <strong><a href='https://ankdev.me/clean-jsdoc-theme/v4/'>Clean</a></strong></p>"
     }
   },
   "markdown": {
