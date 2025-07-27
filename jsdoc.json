@@ -19,7 +19,19 @@
     "theme_opts": {
       "default_theme": "dark",
       "homepageTitle": "cli - home",
-      "title": "HOME"
+      "title": "HOME",
+      "menu": [
+        {
+          "title": "Github",
+          "id": "github",
+          "link": "https://github.com/jlongyam/cli/"
+        },
+        {
+          "title": "npm",
+          "id": "npm",
+          "link": "https://www.npmjs.com/package/@jlongyam/cli"
+        }
+      ]
     }
   },
   "markdown": {
