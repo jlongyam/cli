@@ -3,7 +3,7 @@ const { default: Enquirer } = await import('enquirer');
 const enquirer = new Enquirer();
 
 /**
- * ### input.asks
+ * ### input.ask
  * Prompts the user with an input question and logs the response.
  * @module cli/input/ask
  * @param {Array} options - An array of objects, each containing a 'key' and 'question' property.
