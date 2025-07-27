@@ -1,4 +1,4 @@
-const { default: Enquirer } = await import('../node_modules/enquirer/index.js');
+const { default: Enquirer } = await import('enquirer');
 
 const enquirer = new Enquirer();
 

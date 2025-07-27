@@ -1,4 +1,4 @@
-const { default: Parse } = await import('../node_modules/args-parser/parse.js');
+const { default: Parse } = await import('args-parser');
 
 /**
  * ## args
