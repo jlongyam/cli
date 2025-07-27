@@ -17,7 +17,8 @@ export default [
 			resolve(),
 			commonjs(),
 			terser({
-				compress: false
+				compress: false,
+				mangle: false
 			})
 		]
 	}
