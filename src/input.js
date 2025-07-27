@@ -1,28 +1,22 @@
 const { default: Enquirer } = await import('../node_modules/enquirer/index.js');
 
 const enquirer = new Enquirer();
+
 /**
- * Prompts the user with an input question using Enquirer and logs the response.
- *
- * @param {Object} option - Contains the prompt configuration.
- * @param {string} option.key - The key for the response object.
- * @param {string} option.question - The message to display to the user.
+ * ### input.asks
+ * Prompts the user with an input question and logs the response.
+ * @module cli/input/ask
+ * @param {Array} options - An array of objects, each containing a 'key' and 'question' property.
+ * @returns {Promise<void>} Object logs
+ * @example
+ * import { input } from "@jlongyam/cli";
+ * 
+ * input.ask([{
+ *   key: 'name',
+ *   question: 'What is your other name?'
+ * }]);
  */
-async function ask(option) {
-  const response = await enquirer.prompt({
-    type: 'input',
-    name: option.key,
-    message: option.question
-  });
-  console.log(response);
-}
-/**
- * Prompts the user with a series of input questions based on the provided options array using Enquirer.
- *
- * @param {Array} options - An array of objects, each containing a 'key' and 'question' property for the prompt.
- * @returns {Promise<void>} Logs the user's responses to the console.
- */
-async function asks(options) {
+async function ask(options) {
   const response = await enquirer.prompt((function () {
     let arrayObject = [];
     options.forEach(function (option) {
@@ -38,7 +32,16 @@ async function asks(options) {
   console.log(response);
 }
 
+/**
+ * ## input
+ * Prompts user input using several of methods.
+ * @module cli/input
+ * @return {Object} - Namespace
+ * @example
+ * import { input } from "@jlongyam/cli";
+ * 
+ * console.log(Object.getOwnPropertyNames(input));
+ */
 export const input = {
-  ask: ask,
-  asks: asks
+  ask: ask
 };

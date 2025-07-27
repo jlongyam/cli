@@ -15,10 +15,10 @@
   },
   "license": "MIT",
   "author": "jlongyam",
-  "main": "./dist/index.js",
+  "main": "./src/cli.js",
   "type": "module",
   "exports": {
-    "import": "./dist/index.js"
+    "import": "./dist/cli.js"
   },
   "publishConfig": {
     "access": "public"
@@ -34,18 +34,11 @@
     "rollup": "^4.45.3"
   },
   "scripts": {
+    "test": "node ./tests/index.js -arg",
+    "clean": "clear && rm -rf ./dist/*",
     "build": "clear && rollup -c",
-    "test:args": "clear && node ./test/args.js",
-    "test:args:length": "clear && node ./test/args.js -h --version name=test",
-    "test:dist:args": "clear && node ./test/dist/args.js",
-    "test:dist:args:length": "clear && node ./test/dist/args.js -h --version name=test",
-    "test:input:ask": "clear && node ./test/input.ask.js",
-    "test:dist:input:ask": "clear && node ./test/dist/input.ask.js",
-    "test:input:asks": "clear && node ./test/input.asks.js",
-    "test:dist:input:asks": "clear && node ./test/dist/input.asks.js",
-    "test:index": "clear && node ./test/index.js",
-    "test:dist:index": "clear && node ./test/dist/index.js",
-    "doc": "jsdoc ./src/ -d ./docs/ -t ./node_modules/clean-jsdoc-theme -R ./README.md",
+    "doc": "jsdoc -c ./jsdoc.json",
+    "doc:clean": "clear && rm -rf ./docs",
     "update": "npm publish",
     "next": "npm version patch"
   }

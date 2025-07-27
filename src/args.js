@@ -1,8 +1,14 @@
 const { default: Parse } = await import('../node_modules/args-parser/parse.js');
+
 /**
- * Imports the Parse function from the args-parser module and exports the parsed command-line arguments as an optional 'args' constant.
+ * ## args
+ * Command-line arguments parser.
+ * @module cli/args
+ * @returns {Object} - Arguments 
  * @example
- * if(Object.keys(args).length === 0) {
+ * import { args } from "@jlongyam/cli";
+ * 
+ * if( Object.keys(args).length === 0 ) {
  *   console.log('no arguments')
  * } else {
  *   console.log(args)
