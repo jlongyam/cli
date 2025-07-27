@@ -15,7 +15,7 @@ import { args } from "@jlongyam/cli";
 console.log(args)
 ```
 
-__Shell__
+__terminal__
 
 ```shell
 node index.mjs --help
