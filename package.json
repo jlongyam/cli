@@ -42,7 +42,7 @@
     "pretty": "prettier -w ./dist/cli.js",
     "doc": "jsdoc -c ./jsdoc.json",
     "doc:clean": "clear && rm -rf ./docs",
-    "next": "npm version patch",
+    "next": "npm version patch && git push --tags",
     "update": "npm publish"
   }
 }
