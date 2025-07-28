@@ -1,47 +1,117 @@
-const { default: Enquirer } = await import('enquirer');
+import Enquirer from "enquirer";
 
 const enquirer = new Enquirer();
 
 /**
  * ### input.ask
- * Prompts the user with an input question and logs the response.
+ * 
+ * Prompts the user for input using the enquirer library.
+ *
  * @module cli/input/ask
- * @param {Array} options - An array of objects, each containing a 'key' and 'question' property.
- * @returns {Promise<void>} Object logs
+ * @param {Object} option - Contains the key and question for the prompt.
+ * @returns {Promise<Object>} The user's response.
+ * 
  * @example
  * import { input } from "@jlongyam/cli";
  * 
- * input.ask([{
+ * let result = await input.ask({
  *   key: 'name',
- *   question: 'What is your other name?'
- * }]);
+ *   question: 'what is your name'
+ * });
+ * 
+ * console.log(result.name);
  */
-async function ask(options) {
-  const response = await enquirer.prompt((function () {
-    let arrayObject = [];
-    options.forEach(function (option) {
-      let eachObject = {
-        type: 'input',
-        name: option.key,
-        message: option.question
-      };
-      arrayObject.push(eachObject);
-    })
-    return arrayObject
-  }()));
-  console.log(response);
+async function ask(option) {
+  const response = await enquirer.prompt({
+    type: 'input',
+    name: option.key,
+    message: option.question
+  })
+  return response;
+}
+
+/**
+ * ### input.confirm
+ * 
+ * Prompts the user with a confirmation question using Enquirer.
+ *
+ * @module cli/input/confirm
+ * @param {Object} option - Contains the key and question for the prompt.
+ * @param {string} option.key - The key for the response.
+ * @param {string} option.question - The message to display to the user.
+ * @returns {Promise<Object>} The user's response.
+ * 
+ * @example
+ * import { input } from "@jlongyam/cli";
+ * 
+ * let result = await input.confirm({
+ *   key: 'ok',
+ *   question: 'are you agree with this'
+ * });
+ * 
+ * if(result.ok) {
+ *   console.log('good choise')
+ * } else {
+ *   console.log('too bad')
+ * }
+ */
+async function confirm(option) {
+  const response = await enquirer.prompt({
+    type: 'confirm',
+    name: option.key,
+    message: option.question
+  });
+  return response;
+}
+
+/**
+ * ### input.select
+ * 
+ * Prompts the user with a select menu using Enquirer and logs the selected response.
+ * 
+ * @module cli/input/select
+ * @param {Object} option - Configuration object containing the prompt details.
+ * @param {string} option.key - The key for the response.
+ * @param {string} option.question - The message to display to the user.
+ * @param {Array} option.option - The list of selectable choices.
+ * @returns {Promise<Object>}
+ * 
+ * @example
+ * import { input } from "@jlongyam/cli";
+ * 
+ * let result = await input.select({
+ *   key: 'word',
+ *   question: 'choose one: ',
+ *   option: ['one', 'two', 'three', 'four']
+ * });
+ * 
+ * console.log(result.word);
+ */
+async function select(option) {
+  const response = await enquirer.prompt({
+    type: 'select',
+    name: option.key,
+    message: option.question,
+    choices: option.option
+  });
+  return response;
 }
 
 /**
  * ## input
+ * 
  * Prompts user input using several of methods.
+ * 
  * @module cli/input
  * @return {Object} - Namespace
+ * 
  * @example
  * import { input } from "@jlongyam/cli";
  * 
  * console.log(Object.getOwnPropertyNames(input));
  */
 export const input = {
-  ask: ask
+  confirm: confirm,
+  ask: ask,
+  select: select
 };

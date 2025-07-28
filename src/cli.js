@@ -3,9 +3,12 @@ import { input } from './input.js';
 
 /**
  * # cli
+ * 
  * Export module's command-line args-parser and input utilities.
+ * 
  * @module cli
  * @returns {Object} - Modules
+ * 
  * @example
  * import { args, input } from "@jlongyam/cli";
  * 

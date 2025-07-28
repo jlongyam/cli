@@ -2,9 +2,12 @@ const { default: Parse } = await import('args-parser');
 
 /**
  * ## args
+ * 
  * Command-line arguments parser.
+ * 
  * @module cli/args
- * @returns {Object} - Arguments 
+ * @returns {Object} - Arguments
+ * 
  * @example
  * import { args } from "@jlongyam/cli";
  * 
