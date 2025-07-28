@@ -26,8 +26,41 @@ async function ask(option) {
     type: 'input',
     name: option.key,
     message: option.question
-  })
-  return response;
+  });
+  return response
+}
+
+/**
+ * ### input.suggest
+ * 
+ * Prompts the user for input using Enquirer with the provided option configuration.
+ *
+ * @module cli/input/suggest
+ * @param {Object} option - Configuration object containing key, placeholder, and question.
+ * @param {string} option.key - The key for the response.
+ * @param {string} option.question - The message to display to the user.
+ * @param {string} option.placeholder - The answer placeholder to display to the user.
+ * @returns {Promise<Object>} The user's input response.
+ * 
+ * @example
+ * * import { input } from "@jlongyam/cli";
+ * 
+ * let result = await input.suggest({
+ *   key: 'language',
+ *   question: 'primary language',
+ *   placeholder: 'english'
+ * });
+ * 
+ * console.log(result.language)
+ */
+async function suggest(option) {
+  const response = await enquirer.prompt({
+    type: 'input',
+    name: option.key,
+    message: option.question,
+    initial: option.placeholder
+  });
+  return response
 }
 
 /**
@@ -61,7 +94,7 @@ async function confirm(option) {
     name: option.key,
     message: option.question
   });
-  return response;
+  return response
 }
 
 /**
@@ -94,7 +127,7 @@ async function select(option) {
     message: option.question,
     choices: option.option
   });
-  return response;
+  return response
 }
 
 /**
@@ -113,5 +146,6 @@ async function select(option) {
 export const input = {
   confirm: confirm,
   ask: ask,
+  suggest: suggest,
   select: select
 };
