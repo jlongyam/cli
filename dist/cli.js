@@ -6,41 +6,37 @@ function getDefaultExportFromCjs(x) {
     ? x["default"]
     : x;
 }
-var parse$2;
-var hasRequiredParse;
-function requireParse() {
-  if (hasRequiredParse) return parse$2;
-  hasRequiredParse = 1;
+var parse_min$2;
+var hasRequiredParse_min;
+function requireParse_min() {
+  if (hasRequiredParse_min) return parse_min$2;
+  hasRequiredParse_min = 1;
   const ARGUMENT_SEPARATION_REGEX = /([^=\s]+)=?\s*(.*)/;
-  function Parse(argv) {
-    argv = argv.slice(2);
-    const parsedArgs = {};
-    let argName, argValue;
-    argv.forEach(function (arg) {
-      arg = arg.match(ARGUMENT_SEPARATION_REGEX);
-      arg.splice(0, 1);
-      argName = arg[0];
-      if (argName.indexOf("-") === 0) {
-        argName = argName.slice(argName.slice(0, 2).lastIndexOf("-") + 1);
-      }
-      argValue =
-        arg[1] !== ""
-          ? parseFloat(arg[1]).toString() === arg[1]
-            ? +arg[1]
-            : arg[1]
-          : true;
-      parsedArgs[argName] = argValue;
-    });
-    return parsedArgs;
+  function Parse(s) {
+    s = s.slice(2);
+    const e = {};
+    let t, c;
+    return (
+      s.forEach(function (s) {
+        ((s = s.match(ARGUMENT_SEPARATION_REGEX)).splice(0, 1),
+          0 === (t = s[0]).indexOf("-") &&
+            (t = t.slice(t.slice(0, 2).lastIndexOf("-") + 1)),
+          (c =
+            "" === s[1] ||
+            (parseFloat(s[1]).toString() === s[1] ? +s[1] : s[1])),
+          (e[t] = c));
+      }),
+      e
+    );
   }
-  parse$2 = Parse;
-  return parse$2;
+  parse_min$2 = Parse;
+  return parse_min$2;
 }
-var parseExports = requireParse();
-var parse = getDefaultExportFromCjs(parseExports);
-var parse$1 = Object.freeze({ __proto__: null, default: parse });
+var parse_minExports = requireParse_min();
+var parse_min = getDefaultExportFromCjs(parse_minExports);
+var parse_min$1 = Object.freeze({ __proto__: null, default: parse_min });
 const { default: Parse } = await Promise.resolve().then(function () {
-  return parse$1;
+  return parse_min$1;
 });
 const args = Parse(process.argv);
 var utils = {};
@@ -2471,10 +2467,10 @@ function requireArray() {
   array = ArrayPrompt;
   return array;
 }
-var select;
+var select$1;
 var hasRequiredSelect;
 function requireSelect() {
-  if (hasRequiredSelect) return select;
+  if (hasRequiredSelect) return select$1;
   hasRequiredSelect = 1;
   const ArrayPrompt = requireArray();
   const utils = requireUtils();
@@ -2602,8 +2598,8 @@ function requireSelect() {
       this.restore();
     }
   }
-  select = SelectPrompt;
-  return select;
+  select$1 = SelectPrompt;
+  return select$1;
 }
 var autocomplete;
 var hasRequiredAutocomplete;
@@ -2868,7 +2864,7 @@ function requireForm() {
     async choiceSeparator(choice, i) {
       let sep =
         (await this.resolve(choice.separator, this.state, choice, i)) || ":";
-      return " " + this.styles.disabled(sep);
+      return sep ? " " + this.styles.disabled(sep) : "";
     }
     async renderChoice(choice, i) {
       await this.onChoice(choice, i);
@@ -3092,10 +3088,10 @@ function requireBoolean() {
   boolean = BooleanPrompt;
   return boolean;
 }
-var confirm;
+var confirm$1;
 var hasRequiredConfirm;
 function requireConfirm() {
-  if (hasRequiredConfirm) return confirm;
+  if (hasRequiredConfirm) return confirm$1;
   hasRequiredConfirm = 1;
   const BooleanPrompt = requireBoolean();
   class ConfirmPrompt extends BooleanPrompt {
@@ -3104,8 +3100,8 @@ function requireConfirm() {
       this.default = this.options.default || (this.initial ? "(Y/n)" : "(y/N)");
     }
   }
-  confirm = ConfirmPrompt;
-  return confirm;
+  confirm$1 = ConfirmPrompt;
+  return confirm$1;
 }
 var editable;
 var hasRequiredEditable;
@@ -4826,28 +4822,32 @@ function requireEnquirer() {
   return enquirer$1;
 }
 var enquirerExports = requireEnquirer();
-var index = getDefaultExportFromCjs(enquirerExports);
-var index$1 = Object.freeze({ __proto__: null, default: index });
-const { default: Enquirer } = await Promise.resolve().then(function () {
-  return index$1;
-});
+var Enquirer = getDefaultExportFromCjs(enquirerExports);
 const enquirer = new Enquirer();
-async function ask(options) {
-  const response = await enquirer.prompt(
-    (function () {
-      let arrayObject = [];
-      options.forEach(function (option) {
-        let eachObject = {
-          type: "input",
-          name: option.key,
-          message: option.question,
-        };
-        arrayObject.push(eachObject);
-      });
-      return arrayObject;
-    })(),
-  );
-  console.log(response);
+async function ask(option) {
+  const response = await enquirer.prompt({
+    type: "input",
+    name: option.key,
+    message: option.question,
+  });
+  return response;
 }
-const input = { ask: ask };
+async function confirm(option) {
+  const response = await enquirer.prompt({
+    type: "confirm",
+    name: option.key,
+    message: option.question,
+  });
+  return response;
+}
+async function select(option) {
+  const response = await enquirer.prompt({
+    type: "select",
+    name: option.key,
+    message: option.question,
+    choices: option.option,
+  });
+  return response;
+}
+const input = { confirm: confirm, ask: ask, select: select };
 export { args, input };
