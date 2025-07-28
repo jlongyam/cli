@@ -27,4 +27,8 @@ __result__:
 { help: true }
 ```
 
+## Credit
+
+- [enquirer](https://github.com/enquirer/enquirer)
+
 License [MIT](LICENSE)

@@ -31,6 +31,36 @@ async function ask(option) {
 }
 
 /**
+ * ### input.password
+ * 
+ * Prompts the user for a password input using Enquirer.
+ *
+ * @module cli/input/password
+ * @param {Object} option - Configuration object containing the prompt key and question.
+ * @param {string} option.key - The key for the response.
+ * @param {string} option.question - The message to display to the user.
+ * @returns {Promise<Object>} The response object with the entered password.
+ * 
+ * @example
+ * import { input } from "@jlongyam/cli";
+ * 
+ * let result = await input.password({
+ *   key: 'pass',
+ *   question: 'your password:',
+ * });
+ * 
+ * console.log(result.pass);
+ */
+async function password(option) {
+  const response = await enquirer.prompt({
+    type: 'password',
+    name: option.key,
+    message: option.question
+  });
+  return response
+}
+
+/**
  * ### input.suggest
  * 
  * Prompts the user for input using Enquirer with the provided option configuration.
@@ -43,7 +73,7 @@ async function ask(option) {
  * @returns {Promise<Object>} The user's input response.
  * 
  * @example
- * * import { input } from "@jlongyam/cli";
+ * import { input } from "@jlongyam/cli";
  * 
  * let result = await input.suggest({
  *   key: 'language',
@@ -144,8 +174,9 @@ async function select(option) {
  * console.log(Object.getOwnPropertyNames(input));
  */
 export const input = {
-  confirm: confirm,
   ask: ask,
+  password: password,
   suggest: suggest,
+  confirm: confirm,
   select: select
 };
