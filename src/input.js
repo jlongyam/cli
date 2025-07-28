@@ -161,6 +161,46 @@ async function select(option) {
 }
 
 /**
+ * ### input.form
+ * 
+ * Prompts the user with a form using Enquirer and returns the collected responses.
+ *
+ * @module cli/input/form
+ * @param {Object} option - Configuration for the form prompt, including key, question, and field definitions.
+ * @param {string} option.key - The key for the response.
+ * @param {string} option.question - The message to display to the user.
+ * @param {Array<Object>} option.field - The list of selectable choices.
+ * @param {string} option.field.name - The key name for the response.
+ * @param {string} option.field.message - The key of question.
+ * @param {string} option.field.initial - String placeholder.
+ * @returns {Promise<Object>} The user's responses to the form fields.
+ * @example
+ * import { input } from "@jlongyam/cli";
+ * 
+ * let result = await input.form({
+ *   key: 'data',
+ *   question: 'Please provide the following information:',
+ *   field: [
+ *     { name: 'package', message: 'Package name', initial: 'test' },
+ *     { name: 'version', message: 'Version', initial: '1.0.0' },
+ *     { name: 'main', message: 'Main script', initial: 'index.js' },
+ *     { name: 'type', message: 'Script type', initial: 'module' }
+ *   ]
+ * });
+ * 
+ * console.table(result.data);
+ */
+async function form(option) {
+  const response = await enquirer.prompt({
+    type: 'form',
+    name: option.key,
+    message: option.question,
+    choices: option.field
+  });
+  return response
+}
+
+/**
  * ## input
  * 
  * Prompts user input using several of methods.
@@ -178,5 +218,6 @@ export const input = {
   password: password,
   suggest: suggest,
   confirm: confirm,
-  select: select
+  select: select,
+  form: form
 };

@@ -2755,10 +2755,10 @@ function requirePlaceholder() {
   };
   return placeholder;
 }
-var form;
+var form$1;
 var hasRequiredForm;
 function requireForm() {
-  if (hasRequiredForm) return form;
+  if (hasRequiredForm) return form$1;
   hasRequiredForm = 1;
   const stripAnsi = requireStripAnsi();
   const SelectPrompt = requireSelect();
@@ -2937,8 +2937,8 @@ function requireForm() {
       return super.base.submit.call(this);
     }
   }
-  form = FormPrompt;
-  return form;
+  form$1 = FormPrompt;
+  return form$1;
 }
 var auth;
 var hasRequiredAuth;
@@ -4866,11 +4866,21 @@ async function select(option) {
   });
   return response;
 }
+async function form(option) {
+  const response = await enquirer.prompt({
+    type: "form",
+    name: option.key,
+    message: option.question,
+    choices: option.field,
+  });
+  return response;
+}
 const input = {
   ask: ask,
   password: password,
   suggest: suggest,
   confirm: confirm,
   select: select,
+  form: form,
 };
 export { args, input };
