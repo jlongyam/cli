@@ -8,7 +8,7 @@ export default [
 	{
 		input: pkg.main,
 		output: {
-			file: pkg.exports.import,
+			file: pkg['.']['exports'].['import'],
 			format: 'es',
 			inlineDynamicImports: true
 		},

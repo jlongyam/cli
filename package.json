@@ -19,7 +19,9 @@
   "main": "./src/cli.js",
   "type": "module",
   "exports": {
-    "import": "./dist/cli.js"
+    ".": {
+      "import": "./dist/cli.js"
+    }
   },
   "publishConfig": {
     "access": "public"
