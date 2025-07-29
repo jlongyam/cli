@@ -1,8 +1,11 @@
 {
   "name": "@jlongyam/cli",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "CLI scripts collection",
-  "keywords": [ "cli", "input" ],
+  "keywords": [
+    "cli",
+    "input"
+  ],
   "homepage": "https://jlongyam.github.io/cli/",
   "bugs": {
     "url": "https://github.com/jlongyam/cli/issues"
