@@ -96,7 +96,7 @@ async function suggest(option) {
 /**
  * ### input.confirm
  * 
- * Prompts the user with a confirmation question using Enquirer.
+ * Prompts the user with a confirmation question.
  *
  * @module cli/input/confirm
  * @param {Object} option - Contains the key and question for the prompt.
@@ -123,6 +123,42 @@ async function confirm(option) {
     type: 'confirm',
     name: option.key,
     message: option.question
+  });
+  return response
+}
+
+/**
+ * ### input.toggle
+ * 
+ * Prompts the user with a toggle question.
+ *
+ * @module cli/input/toggle
+ * @param {Object} option - Contains the key and question for the prompt.
+ * @param {string} option.key - The key for the response.
+ * @param {string} option.question - The message to display to the user.
+ * @param {string} option.enable - Placeholder for boolean true.
+ * @param {string} option.disable - Placeholder for boolean false.
+ * @returns {Promise<Object>} The user's response.
+ * 
+ * @example
+ * import { input } from "@jlongyam/cli";
+ * 
+ * let result = await input.toggle({
+ *   key: 'toggle',
+ *   question: 'switch option',
+ *   enable: 'on',
+ *   disable: 'off'
+ * });
+ * 
+ * console.log(result.toggle)
+ */
+async function toggle(option) {
+  const response = await enquirer.prompt({
+    type: 'toggle',
+    name: option.key,
+    message: option.question,
+    enabled: option.enable,
+    disabled: option.disable 
   });
   return response
 }
@@ -218,6 +254,7 @@ export const input = {
   password: password,
   suggest: suggest,
   confirm: confirm,
+  toggle: toggle,
   select: select,
   form: form
 };

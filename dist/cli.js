@@ -4492,10 +4492,10 @@ function requireText() {
   text = requireInput();
   return text;
 }
-var toggle;
+var toggle$1;
 var hasRequiredToggle;
 function requireToggle() {
-  if (hasRequiredToggle) return toggle;
+  if (hasRequiredToggle) return toggle$1;
   hasRequiredToggle = 1;
   const BooleanPrompt = requireBoolean();
   class TogglePrompt extends BooleanPrompt {
@@ -4588,8 +4588,8 @@ function requireToggle() {
       this.restore();
     }
   }
-  toggle = TogglePrompt;
-  return toggle;
+  toggle$1 = TogglePrompt;
+  return toggle$1;
 }
 var quiz;
 var hasRequiredQuiz;
@@ -4857,6 +4857,16 @@ async function confirm(option) {
   });
   return response;
 }
+async function toggle(option) {
+  const response = await enquirer.prompt({
+    type: "toggle",
+    name: option.key,
+    message: option.question,
+    enabled: option.enable,
+    disabled: option.disable,
+  });
+  return response;
+}
 async function select(option) {
   const response = await enquirer.prompt({
     type: "select",
@@ -4880,6 +4890,7 @@ const input = {
   password: password,
   suggest: suggest,
   confirm: confirm,
+  toggle: toggle,
   select: select,
   form: form,
 };
