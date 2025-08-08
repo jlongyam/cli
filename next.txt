@@ -1,0 +1,16 @@
+https://www.npmjs.com/package/cli-highlight
+https://www.npmjs.com/package/http-server
+https://www.npmjs.com/package/listr
+https://www.npmjs.com/package/readline-sync#placeholders
+https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797
+https://github.com/anseki/readline-sync
+https://github.com/enquirer/readline-utils
+
+keywords:readline
+npm i --save console-read-write
+fileinput
+emit-keypress
+npm i carets
+https://www.npmjs.com/package/keypress-browserify
+easywizard
+npm i jwalker
